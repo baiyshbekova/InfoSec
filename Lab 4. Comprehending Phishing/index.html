@@ -1,0 +1,143 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Secure Payment — Phishing Awareness Lab</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: #f2f4f7;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            margin: 0;
+        }
+
+        .container {
+            background: white;
+            width: 340px;
+            padding: 28px;
+            border-radius: 12px;
+            box-shadow: 0 5px 20px #0001;
+        }
+
+        h2 { text-align: center; }
+
+        .notice {
+            background: #fff4d6;
+            padding: 12px;
+            border-radius: 6px;
+            font-size: 13px;
+            line-height: 1.5;
+        }
+
+        label {
+            display: block;
+            margin-top: 14px;
+            font-size: 14px;
+        }
+
+        input {
+            box-sizing: border-box;
+            width: 100%;
+            padding: 11px;
+            margin-top: 6px;
+            border: 1px solid #ccd1d8;
+            border-radius: 6px;
+        }
+
+        button {
+            width: 100%;
+            margin-top: 20px;
+            padding: 12px;
+            background: #2463eb;
+            color: white;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+        }
+
+        #result {
+            margin-top: 14px;
+            font-size: 14px;
+            line-height: 1.5;
+        }
+    </style>
+</head>
+<body>
+    <main class="container">
+        <h2>Payment Verification</h2>
+
+        <p class="notice">
+            Educational phishing-awareness simulation.
+            Do not enter real payment information.
+            Use only the sample values provided by your instructor.
+        </p>
+
+        <form id="paymentForm">
+            <label for="cardholder">Cardholder name</label>
+            <input id="cardholder" required
+                   placeholder="DEMO USER"
+                   autocomplete="off">
+
+            <label for="card_number">Demo card number</label>
+            <input id="card_number" required
+                   placeholder="DEMO-1234"
+                   autocomplete="off">
+
+            <label for="expiry">Demo expiry date</label>
+            <input id="expiry" required
+                   placeholder="MM/YY"
+                   autocomplete="off">
+
+            <label for="security_code">Demo security code</label>
+            <input id="security_code" required
+                   placeholder="DEMO"
+                   autocomplete="off">
+
+            <button type="submit">Continue</button>
+        </form>
+
+        <p id="result" role="status"></p>
+    </main>
+
+    <script>
+        document.getElementById("paymentForm")
+            .addEventListener("submit", async function(event) {
+                event.preventDefault();
+
+                const data = {
+                    cardholder: document.getElementById("cardholder").value,
+                    demo_reference: document.getElementById("card_number").value,
+                    demo_expiry: document.getElementById("expiry").value,
+                    demo_code: document.getElementById("security_code").value
+                };
+
+                const result = document.getElementById("result");
+
+                try {
+                    const response = await fetch(
+                        "http://127.0.0.1:8000/submit",
+                        {
+                            method: "POST",
+                            headers: {
+                                "Content-Type": "application/json"
+                            },
+                            body: JSON.stringify(data)
+                        }
+                    );
+
+                    const answer = await response.json();
+                    result.textContent = answer.message;
+                } catch (error) {
+                    result.textContent =
+                        "Could not connect to the local training server.";
+                }
+            });
+    </script>
+</body>
+</html>
+
