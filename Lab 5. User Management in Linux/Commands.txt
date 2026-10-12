@@ -1,0 +1,443 @@
+aselbbaiyshbekova@Noutbuk-Asel InfoSec % cd ~/InfoSec
+mkdir "Lab 5. User Management in Linux"
+cd "Lab 5. User Management in Linux"
+aselbbaiyshbekova@Noutbuk-Asel Lab 5. User Management in Linux % cat /etc/group
+##
+# Group Database
+# 
+# Note that this file is consulted directly only when the system is running
+# in single-user mode.  At other times this information is provided by
+# Open Directory.
+#
+# See the opendirectoryd(8) man page for additional information about
+# Open Directory.
+##
+nobody:*:-2:
+nogroup:*:-1:
+wheel:*:0:root
+daemon:*:1:root
+kmem:*:2:root
+sys:*:3:root
+tty:*:4:root
+operator:*:5:root
+mail:*:6:_teamsserver
+bin:*:7:
+procview:*:8:root
+procmod:*:9:root
+owner:*:10:
+everyone:*:12:
+_taskgated:*:13:_taskgated
+group:*:16:
+staff:*:20:root
+_networkd:*:24:
+_installassistant:*:25:
+_lp:*:26:
+_postfix:*:27:
+_postdrop:*:28:
+certusers:*:29:root,_jabber,_postfix,_cyrus,_calendar,_dovecot,_ftp
+_keytabusers:*:30:_calendar,_jabber,_postfix
+_scsd:*:31:
+_ces:*:32:
+_appstore:*:33:_appstore
+utmp:*:45:
+authedusers:*:50:
+interactusers:*:51:
+netusers:*:52:
+consoleusers:*:53:
+_mcxalr:*:54:
+_appleevents:*:55:
+_geod:*:56:
+_devdocs:*:59:
+_sandbox:*:60:
+localaccounts:*:61:
+netaccounts:*:62:
+_mdnsresponder:*:65:
+_uucp:*:66:
+_ard:*:67:
+dialer:*:68:
+network:*:69:
+_www:*:70:_devicemgr,_teamsserver
+_eppc:*:71:_eppc
+_cvs:*:72:
+_svn:*:73:
+_mysql:*:74:
+_sshd:*:75:
+_qtss:*:76:
+_mailman:*:78:
+_appserverusr:*:79:
+admin:*:80:root
+_appserveradm:*:81:
+_clamav:*:82:
+_amavisd:*:83:
+_jabber:*:84:
+_appowner:*:87:
+_windowserver:*:88:
+_spotlight:*:89:
+accessibility:*:90:
+_tokend:*:91:
+_securityagent:*:92:
+_calendar:*:93:_teamsserver
+_teamsserver:*:94:_devicemgr
+_update_sharing:*:95:
+_installer:*:96:
+_atsserver:*:97:
+_lpadmin:*:98:
+_unknown:*:99:
+_lpoperator:*:100:
+_softwareupdate:*:200:_softwareupdate
+_guest:*:201:
+_coreaudiod:*:202:
+_screensaver:*:203:
+_developer:*:204:
+_locationd:*:205:
+_detachedsig:*:207:_locationd
+_trustevaluationagent:*:208:
+_odchpass:*:209:_teamsserver
+_timezone:*:210:
+_lda:*:211:
+_cvms:*:212:
+_usbmuxd:*:213:
+_dpaudio:*:215:_dpaudio
+_postgres:*:216:_devicemgr,_calendar,_teamsserver,_xserverdocs
+_devicemgr:*:220:
+_webauthserver:*:221:_teamsserver,_devicemgr
+_netbios:*:222:
+_warmd:*:224:_warmd
+_dovenull:*:227:
+_netstatistics:*:228:
+_assetcache:*:235:
+_coremediaiod:*:236:
+_launchservicesd:*:239:
+_iconservices:*:240:
+_distnote:*:241:
+_nsurlsessiond:*:242:
+_displaypolicyd:*:244:
+_astris:*:245:
+_gamecontrollerd:*:247:
+_mbsetupuser:*:248:
+_ondemand:*:249:
+_analyticsusers:*:250:_analyticsd,_networkd,_timed,_reportmemoryexception,_mbsetupuser
+_xserverdocs:*:251:
+_wwwproxy:*:252:
+_mobileasset:*:253:
+_findmydevice:*:254:
+_datadetectors:*:257:
+_captiveagent:*:258:
+_ctkd:*:259:
+_applepay:*:260:
+_hidd:*:261:
+_cmiodalassistants:*:262:
+_analyticsd:*:263:_analyticsd
+_webdeveloper:*:264:
+_fpsd:*:265:_fpsd
+_timed:*:266:
+_nearbyd:*:268:_nearbyd
+_reportmemoryexception:*:269:_reportmemoryexception
+_driverkit:*:270:_driverkit
+_diskimagesiod:*:271:_diskimagesiod
+_logd:*:272:_logd
+_appinstalld:*:273:_appinstalld
+_installcoordinationd:*:274:_installcoordinationd
+_demod:*:275:_demod
+_rmd:*:277:_rmd
+_accessoryupdater:*:278:_accessoryupdater
+_knowledgegraphd:*:279:_knowledgegraphd
+_coreml:*:280:_coreml
+_sntpd:*:281:_sntpd,_timed
+_trustd:*:282:_trustd
+_mmaintenanced:*:283:_mmaintenanced
+_darwindaemon:*:284:_darwindaemon
+_notification_proxy:*:285:
+_avphidbridge:*:288:_avphidbridge
+_biome:*:289:_biome
+_backgroundassets:*:291:_backgroundassets
+_mobilegestalthelper:*:293:
+_audiomxd:*:294:
+_terminusd:*:295:
+_neuralengine:*:296:_neuralengine
+_eligibilityd:*:297:_eligibilityd
+_systemstatusd:*:298:_systemstatusd
+_aonsensed:*:300:_aonsensed
+_modelmanagerd:*:301:_modelmanagerd
+_reportsystemmemory:*:302:_reportsystemmemory
+_swtransparencyd:*:303:_swtransparencyd
+_naturallanguaged:*:304:_naturallanguaged
+_spinandd:*:305:_spinandd
+_corespeechd:*:306:_corespeechd
+_diagnosticservicesd:*:307:_diagnosticservicesd
+_mds_stores:*:308:_mds_stores
+com.apple.access_ftp:*:395:
+com.apple.access_disabled:*:396:
+com.apple.access_sessionkey:*:397:
+com.apple.access_screensharing:*:398:
+com.apple.access_ssh:*:399:
+com.apple.access_remote_ae:*:400:
+_oahd:*:441:_oahd
+aselbbaiyshbekova@Noutbuk-Asel Lab 5. User Management in Linux % uname -s
+Darwin
+aselbbaiyshbekova@Noutbuk-Asel Lab 5. User Management in Linux % docker run -it --name lab5-ubuntu ubuntu:24.04 bash
+docker: Error response from daemon: Conflict. The container name "/lab5-ubuntu" is already in use by container "ff9db3645eca30116b7cb852e4f35988147e6f2ab7787c8ab364bafbc07f1d2d". You have to remove (or rename) that container to be able to reuse that name.
+
+Run 'docker run --help' for more information
+aselbbaiyshbekova@Noutbuk-Asel Lab 5. User Management in Linux % docker run -it --name lab5-ubuntu ubuntu:24.04 bash
+root@c64f813bd218:/# apt update
+apt install -y passwd login
+Get:1 http://ports.ubuntu.com/ubuntu-ports noble InRelease [256 kB]
+Get:2 http://ports.ubuntu.com/ubuntu-ports noble-updates InRelease [126 kB]
+Get:3 http://ports.ubuntu.com/ubuntu-ports noble-backports InRelease [126 kB]
+Get:4 http://ports.ubuntu.com/ubuntu-ports noble-security InRelease [126 kB]
+Get:5 http://ports.ubuntu.com/ubuntu-ports noble/universe arm64 Packages [19.0 MB]
+Get:6 http://ports.ubuntu.com/ubuntu-ports noble/main arm64 Packages [1776 kB] 
+Get:7 http://ports.ubuntu.com/ubuntu-ports noble/multiverse arm64 Packages [274 kB]
+Get:8 http://ports.ubuntu.com/ubuntu-ports noble/restricted arm64 Packages [113 kB]
+Get:9 http://ports.ubuntu.com/ubuntu-ports noble-updates/restricted arm64 Packages [3192 kB]
+Get:10 http://ports.ubuntu.com/ubuntu-ports noble-updates/universe arm64 Packages [2212 kB]
+Get:11 http://ports.ubuntu.com/ubuntu-ports noble-updates/multiverse arm64 Packages [104 kB]
+Get:12 http://ports.ubuntu.com/ubuntu-ports noble-updates/main arm64 Packages [1761 kB]
+Get:13 http://ports.ubuntu.com/ubuntu-ports noble-backports/universe arm64 Packages [36.3 kB]
+Get:14 http://ports.ubuntu.com/ubuntu-ports noble-backports/multiverse arm64 Packages [669 B]
+Get:15 http://ports.ubuntu.com/ubuntu-ports noble-backports/main arm64 Packages [49.0 kB]
+Get:16 http://ports.ubuntu.com/ubuntu-ports noble-security/multiverse arm64 Packages [99.1 kB]
+Get:17 http://ports.ubuntu.com/ubuntu-ports noble-security/universe arm64 Packages [1636 kB]
+Get:18 http://ports.ubuntu.com/ubuntu-ports noble-security/restricted arm64 Packages [3069 kB]
+Get:19 http://ports.ubuntu.com/ubuntu-ports noble-security/main arm64 Packages [1448 kB]
+Fetched 35.4 MB in 4min 32s (130 kB/s)                                         
+Reading package lists... Done
+Building dependency tree... Done
+Reading state information... Done
+3 packages can be upgraded. Run 'apt list --upgradable' to see them.
+Reading package lists... Done
+Building dependency tree... Done
+Reading state information... Done
+passwd is already the newest version (1:4.13+dfsg1-4ubuntu3.2).
+login is already the newest version (1:4.13+dfsg1-4ubuntu3.2).
+0 upgraded, 0 newly installed, 0 to remove and 3 not upgraded.
+root@c64f813bd218:/# cat /etc/passwd
+root:x:0:0:root:/root:/bin/bash
+daemon:x:1:1:daemon:/usr/sbin:/usr/sbin/nologin
+bin:x:2:2:bin:/bin:/usr/sbin/nologin
+sys:x:3:3:sys:/dev:/usr/sbin/nologin
+sync:x:4:65534:sync:/bin:/bin/sync
+games:x:5:60:games:/usr/games:/usr/sbin/nologin
+man:x:6:12:man:/var/cache/man:/usr/sbin/nologin
+lp:x:7:7:lp:/var/spool/lpd:/usr/sbin/nologin
+mail:x:8:8:mail:/var/mail:/usr/sbin/nologin
+news:x:9:9:news:/var/spool/news:/usr/sbin/nologin
+uucp:x:10:10:uucp:/var/spool/uucp:/usr/sbin/nologin
+proxy:x:13:13:proxy:/bin:/usr/sbin/nologin
+www-data:x:33:33:www-data:/var/www:/usr/sbin/nologin
+backup:x:34:34:backup:/var/backups:/usr/sbin/nologin
+list:x:38:38:Mailing List Manager:/var/list:/usr/sbin/nologin
+irc:x:39:39:ircd:/run/ircd:/usr/sbin/nologin
+_apt:x:42:65534::/nonexistent:/usr/sbin/nologin
+nobody:x:65534:65534:nobody:/nonexistent:/usr/sbin/nologin
+ubuntu:x:1000:1000:Ubuntu:/home/ubuntu:/bin/bash
+root@c64f813bd218:/# cut -d: -f1 /etc/passwd
+root
+daemon
+bin
+sys
+sync
+games
+man
+lp
+mail
+news
+uucp
+proxy
+www-data
+backup
+list
+irc
+_apt
+nobody
+ubuntu
+root@c64f813bd218:/# apt install -y adduser
+Reading package lists... Done
+Building dependency tree... Done
+Reading state information... Done
+Suggested packages:
+  liblocale-gettext-perl perl cron quota ecryptfs-utils
+The following NEW packages will be installed:
+  adduser
+0 upgraded, 1 newly installed, 0 to remove and 3 not upgraded.
+Need to get 101 kB of archives.
+After this operation, 463 kB of additional disk space will be used.
+Get:1 http://ports.ubuntu.com/ubuntu-ports noble/main arm64 adduser all 3.137ubuntu1 [101 kB]
+Fetched 101 kB in 1s (126 kB/s)
+debconf: delaying package configuration, since apt-utils is not installed
+Selecting previously unselected package adduser.
+(Reading database ... 4376 files and directories currently installed.)
+Preparing to unpack .../adduser_3.137ubuntu1_all.deb ...
+Unpacking adduser (3.137ubuntu1) ...
+Setting up adduser (3.137ubuntu1) ...
+root@c64f813bd218:/# adduser user1
+info: Adding user `user1' ...
+info: Selecting UID/GID from range 1000 to 59999 ...
+info: Adding new group `user1' (1001) ...
+info: Adding new user `user1' (1001) with group `user1 (1001)' ...
+info: Creating home directory `/home/user1' ...
+info: Copying files from `/etc/skel' ...
+New password: 
+Retype new password: 
+passwd: password updated successfully
+Changing the user information for user1
+Enter the new value, or press ENTER for the default
+	Full Name []: Asel
+	Room Number []: 312
+	Work Phone []: 55555555555
+	Home Phone []: 66666666666
+	Other []: -
+chfn: name with non-ASCII characters: 'фAsel'
+Is the information correct? [Y/n] n
+Changing the user information for user1
+Enter the new value, or press ENTER for the default
+	Full Name [фAsel]: Asel
+	Room Number [312]: 
+	Work Phone [55555555555]: 
+	Home Phone [66666666666]: 
+	Other [-]: 
+Is the information correct? [Y/n] y
+info: Adding new user `user1' to supplemental / extra groups `users' ...
+info: Adding user `user1' to group `users' ...
+root@c64f813bd218:/# cat /etc/passwd | grep '^user1:'
+user1:x:1001:1001:Asel,312,55555555555,66666666666,-:/home/user1:/bin/bash
+root@c64f813bd218:/# ls -la /home/user1
+total 20
+drwxr-x--- 2 user1 user1 4096 Oct 12 12:58 .
+drwxr-xr-x 1 root  root  4096 Oct 12 12:58 ..
+-rw-r--r-- 1 user1 user1  220 Oct 12 12:58 .bash_logout
+-rw-r--r-- 1 user1 user1 3771 Oct 12 12:58 .bashrc
+-rw-r--r-- 1 user1 user1  807 Oct 12 12:58 .profile
+root@c64f813bd218:/# su - user1
+user1@c64f813bd218:~$ whoami
+user1
+user1@c64f813bd218:~$ pwd
+/home/user1
+user1@c64f813bd218:~$ exit
+logout
+root@c64f813bd218:/# chfn user1
+Changing the user information for user1
+Enter the new value, or press ENTER for the default
+	Full Name [Asel]: 
+	Room Number [312]: 
+	Work Phone [55555555555]: 
+	Home Phone [66666666666]: 
+	Other [-]: 
+root@c64f813bd218:/# getent passwd user1
+user1:x:1001:1001:Asel,312,55555555555,66666666666,-:/home/user1:/bin/bash
+root@c64f813bd218:/# ps -u user1
+  PID TTY          TIME CMD
+root@c64f813bd218:/# pkill -KILL -u user1
+root@c64f813bd218:/# deluser --remove-home --force user1
+Unknown option: force
+deluser [--system] [--remove-home] [--remove-all-files] [--backup]
+        [--backup-to dir] [--backup-suffix str] [--conf file]
+        [--quiet] [--verbose] [--debug] user
+
+  remove a normal user from the system
+
+deluser --group [--system] [--only-if-empty] [--conf file] [--quiet]
+        [--verbose] [--debug] group
+delgroup [--system] [--only-if-empty] [--conf file] [--quiet]
+         [--verbose] [--debug] group
+  remove a group from the system
+
+deluser [--conf file] [--quiet] [--verbose] [--debug] user group
+  remove the user from a group
+root@c64f813bd218:/# getent passwd user1
+user1:x:1001:1001:Asel,312,55555555555,66666666666,-:/home/user1:/bin/bash
+root@c64f813bd218:/# ls -ld /home/user1
+drwxr-x--- 2 user1 user1 4096 Oct 12 13:01 /home/user1
+root@c64f813bd218:/# cat /etc/group
+root:x:0:
+daemon:x:1:
+bin:x:2:
+sys:x:3:
+adm:x:4:ubuntu
+tty:x:5:
+disk:x:6:
+lp:x:7:
+mail:x:8:
+news:x:9:
+uucp:x:10:
+man:x:12:
+proxy:x:13:
+kmem:x:15:
+dialout:x:20:ubuntu
+fax:x:21:
+voice:x:22:
+cdrom:x:24:ubuntu
+floppy:x:25:ubuntu
+tape:x:26:
+sudo:x:27:ubuntu
+audio:x:29:ubuntu
+dip:x:30:ubuntu
+www-data:x:33:
+backup:x:34:
+operator:x:37:
+list:x:38:
+irc:x:39:
+src:x:40:
+shadow:x:42:
+utmp:x:43:
+video:x:44:ubuntu
+sasl:x:45:
+plugdev:x:46:ubuntu
+staff:x:50:
+games:x:60:
+users:x:100:user1
+nogroup:x:65534:
+ubuntu:x:1000:
+user1:x:1001:
+root@c64f813bd218:/# cut -d: -f1 /etc/group
+root
+daemon
+bin
+sys
+adm
+tty
+disk
+lp
+mail
+news
+uucp
+man
+proxy
+kmem
+dialout
+fax
+voice
+cdrom
+floppy
+tape
+sudo
+audio
+dip
+www-data
+backup
+operator
+list
+irc
+src
+shadow
+utmp
+video
+sasl
+plugdev
+staff
+games
+users
+nogroup
+ubuntu
+user1
+root@c64f813bd218:/# groupadd lab5group
+root@c64f813bd218:/# getent group lab5group
+lab5group:x:1002:
+root@c64f813bd218:/# useradd -m -s /bin/bash labuser5
+root@c64f813bd218:/# usermod -aG lab5group labuser5
+root@c64f813bd218:/# groups labuser5
+labuser5 : labuser5 lab5group
+root@c64f813bd218:/# id labuser5
+uid=1002(labuser5) gid=1003(labuser5) groups=1003(labuser5),1002(lab5group)
+
