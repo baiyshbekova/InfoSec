@@ -1,0 +1,78 @@
+aselbbaiyshbekova@Noutbuk-Asel ~ % docker start -ai lab5-ubuntu
+root@c64f813bd218:/# cd /home
+touch cron_output.txt
+nano cron_script.py
+bash: nano: command not found
+root@c64f813bd218:/home# apt update
+apt install -y nano
+Hit:1 http://ports.ubuntu.com/ubuntu-ports noble InRelease
+Hit:2 http://ports.ubuntu.com/ubuntu-ports noble-updates InRelease
+Hit:3 http://ports.ubuntu.com/ubuntu-ports noble-backports InRelease
+Get:4 http://ports.ubuntu.com/ubuntu-ports noble-security InRelease [126 kB]
+Get:5 http://ports.ubuntu.com/ubuntu-ports noble-security/main arm64 Packages [1450 kB]
+Fetched 1576 kB in 3s (608 kB/s)   
+Reading package lists... Done
+Building dependency tree... Done
+Reading state information... Done
+3 packages can be upgraded. Run 'apt list --upgradable' to see them.
+Reading package lists... Done
+Building dependency tree... Done
+Reading state information... Done
+Suggested packages:
+  hunspell
+The following NEW packages will be installed:
+  nano
+0 upgraded, 1 newly installed, 0 to remove and 3 not upgraded.
+Need to get 281 kB of archives.
+After this operation, 909 kB of additional disk space will be used.
+Get:1 http://ports.ubuntu.com/ubuntu-ports noble-updates/main arm64 nano arm64 7.2-2ubuntu0.2 [281 kB]
+Fetched 281 kB in 1s (230 kB/s)
+debconf: delaying package configuration, since apt-utils is not installed
+Selecting previously unselected package nano.
+(Reading database ... 4424 files and directories currently installed.)
+Preparing to unpack .../nano_7.2-2ubuntu0.2_arm64.deb ...
+Unpacking nano (7.2-2ubuntu0.2) ...
+Setting up nano (7.2-2ubuntu0.2) ...
+update-alternatives: using /bin/nano to provide /usr/bin/editor (editor) in auto mode
+update-alternatives: warning: skip creation of /usr/share/man/man1/editor.1.gz because associated file /usr/share/man/man1/nano.1.gz (of link group editor) doesn't exist
+update-alternatives: using /bin/nano to provide /usr/bin/pico (pico) in auto mode
+update-alternatives: warning: skip creation of /usr/share/man/man1/pico.1.gz because associated file /usr/share/man/man1/nano.1.gz (of link group pico) doesn't exist
+root@c64f813bd218:/home# nano cron_script.py
+root@c64f813bd218:/home# python3 /home/cron_script.py
+root@c64f813bd218:/home# cat /home/cron_output.txt
+Cron executed at 2026-10-12 18:55:30.673360
+root@c64f813bd218:/home# service cron start
+ * Starting periodic command scheduler cron                              [ OK ] 
+root@c64f813bd218:/home# crontab -e
+no crontab for root - using an empty one
+crontab: installing new crontab
+root@c64f813bd218:/home# crontab -l
+# Edit this file to introduce tasks to be run by cron.
+# 
+# Each task to run has to be defined through a single line
+# indicating with different fields when the task will be run
+# and what command to run for the task
+# 
+# To define the time you can provide concrete values for
+# minute (m), hour (h), day of month (dom), month (mon),
+# and day of week (dow) or use '*' in these fields (for 'any').
+# 
+# Notice that tasks will be started based on the cron's system
+# daemon's notion of time and timezones.
+# 
+# Output of the crontab jobs (including errors) is sent through
+# email to the user the crontab file belongs to (unless redirected).
+# 
+# For example, you can run a backup of all your user accounts
+# at 5 a.m every week with:
+# 0 5 * * 1 tar -zcf /var/backups/home.tgz /home/
+# 
+# For more information see the manual pages of crontab(5) and cron(8)
+# 
+# m h  dom mon dow   command
+* * * * * /usr/bin/python3 /home/cron_script.py
+root@c64f813bd218:/home# cat /home/cron_output.txt
+Cron executed at 2026-10-12 18:55:30.673360
+root@c64f813bd218:/home# exit
+exit
+
