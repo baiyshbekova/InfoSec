@@ -1,0 +1,71 @@
+aselbbaiyshbekova@Noutbuk-Asel Lab 6. Permissions in Linux % docker start -ai lab5-ubuntu
+root@c64f813bd218:/# touch file.txt
+ls -la
+total 68
+drwxr-xr-x   1 root root 4096 Oct 12 13:29 .
+drwxr-xr-x   1 root root 4096 Oct 12 13:29 ..
+-rwxr-xr-x   1 root root    0 Oct 12 12:51 .dockerenv
+lrwxrwxrwx   1 root root    7 Apr 22  2024 bin -> usr/bin
+drwxr-xr-x   2 root root 4096 Apr 22  2024 boot
+drwxr-xr-x   5 root root  360 Oct 12 13:29 dev
+drwxr-xr-x   1 root root 4096 Oct 12 13:05 etc
+-rw-r--r--   1 root root    0 Oct 12 13:29 file.txt
+drwxr-xr-x   1 root root 4096 Oct 12 13:05 home
+lrwxrwxrwx   1 root root    7 Apr 22  2024 lib -> usr/lib
+drwxr-xr-x   2 root root 4096 Sep 17 02:10 media
+drwxr-xr-x   2 root root 4096 Sep 17 02:10 mnt
+drwxr-xr-x   2 root root 4096 Sep 17 02:10 opt
+dr-xr-xr-x 216 root root    0 Oct 12 13:29 proc
+drwx------   1 root root 4096 Oct 12 13:17 root
+drwxr-xr-x   1 root root 4096 Oct 12 12:58 run
+lrwxrwxrwx   1 root root    8 Apr 22  2024 sbin -> usr/sbin
+drwxr-xr-x   2 root root 4096 Sep 17 02:10 srv
+dr-xr-xr-x  11 root root    0 Oct 12 13:29 sys
+drwxrwxrwt   1 root root 4096 Oct 12 12:51 tmp
+drwxr-xr-x   1 root root 4096 Sep 17 02:10 usr
+drwxr-xr-x   1 root root 4096 Sep 17 02:17 var
+root@c64f813bd218:/# chmod 754 file.txt
+ls -la
+total 68
+drwxr-xr-x   1 root root 4096 Oct 12 13:29 .
+drwxr-xr-x   1 root root 4096 Oct 12 13:29 ..
+-rwxr-xr-x   1 root root    0 Oct 12 12:51 .dockerenv
+lrwxrwxrwx   1 root root    7 Apr 22  2024 bin -> usr/bin
+drwxr-xr-x   2 root root 4096 Apr 22  2024 boot
+drwxr-xr-x   5 root root  360 Oct 12 13:29 dev
+drwxr-xr-x   1 root root 4096 Oct 12 13:05 etc
+-rwxr-xr--   1 root root    0 Oct 12 13:29 file.txt
+drwxr-xr-x   1 root root 4096 Oct 12 13:05 home
+lrwxrwxrwx   1 root root    7 Apr 22  2024 lib -> usr/lib
+drwxr-xr-x   2 root root 4096 Sep 17 02:10 media
+drwxr-xr-x   2 root root 4096 Sep 17 02:10 mnt
+drwxr-xr-x   2 root root 4096 Sep 17 02:10 opt
+dr-xr-xr-x 217 root root    0 Oct 12 13:29 proc
+drwx------   1 root root 4096 Oct 12 13:17 root
+drwxr-xr-x   1 root root 4096 Oct 12 12:58 run
+lrwxrwxrwx   1 root root    8 Apr 22  2024 sbin -> usr/sbin
+drwxr-xr-x   2 root root 4096 Sep 17 02:10 srv
+dr-xr-xr-x  11 root root    0 Oct 12 13:29 sys
+drwxrwxrwt   1 root root 4096 Oct 12 12:51 tmp
+drwxr-xr-x   1 root root 4096 Sep 17 02:10 usr
+drwxr-xr-x   1 root root 4096 Sep 17 02:17 var
+root@c64f813bd218:/# ls -l file.txt
+-rwxr-xr-- 1 root root 0 Oct 12 13:29 file.txt
+root@c64f813bd218:/# chown nobody file.txt
+root@c64f813bd218:/# ls -l file.txt
+-rwxr-xr-- 1 nobody root 0 Oct 12 13:29 file.txt
+root@c64f813bd218:/# chgrp nogroup file.txt
+root@c64f813bd218:/# ls -l file.txt
+-rwxr-xr-- 1 nobody nogroup 0 Oct 12 13:29 file.txt
+root@c64f813bd218:/# stat file.txt
+  File: file.txt
+  Size: 0         	Blocks: 0          IO Block: 4096   regular empty file
+Device: 0,62	Inode: 141         Links: 1
+Access: (0754/-rwxr-xr--)  Uid: (65534/  nobody)   Gid: (65534/ nogroup)
+Access: 2026-10-12 13:29:40.342362003 +0000
+Modify: 2026-10-12 13:29:40.342362003 +0000
+Change: 2026-10-12 13:30:53.377091009 +0000
+ Birth: 2026-10-12 13:29:40.342362003 +0000
+root@c64f813bd218:/# exit
+exit
+
