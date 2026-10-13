@@ -1,0 +1,147 @@
+aselbbaiyshbekova@Noutbuk-Asel Lab 13. Keylogger % docker start -ai lab5-ubuntu
+
+root@c64f813bd218:/# mkdir -p ~/keylogger
+root@c64f813bd218:/# cd ~/keylogger
+root@c64f813bd218:~/keylogger# python3 -m venv venv
+root@c64f813bd218:~/keylogger# source venv/bin/activate
+(venv) root@c64f813bd218:~/keylogger# pip install pynput requests
+Collecting pynput
+  Downloading pynput-1.8.2-py2.py3-none-any.whl.metadata (32 kB)
+Collecting requests
+  Using cached requests-2.34.2-py3-none-any.whl.metadata (4.8 kB)
+Collecting six (from pynput)
+  Downloading six-1.17.0-py2.py3-none-any.whl.metadata (1.7 kB)
+Collecting evdev>=1.3 (from pynput)
+  Downloading evdev-2.0.0.tar.gz (33 kB)
+  Installing build dependencies ... done
+  Getting requirements to build wheel ... done
+  Preparing metadata (pyproject.toml) ... done
+Collecting python-xlib>=0.17 (from pynput)
+  Downloading python_xlib-0.33-py2.py3-none-any.whl.metadata (6.2 kB)
+Collecting charset_normalizer<4,>=2 (from requests)
+  Using cached charset_normalizer-3.5.2-cp312-cp312-manylinux2014_aarch64.manylinux_2_17_aarch64.manylinux_2_28_aarch64.whl.metadata (46 kB)
+Collecting idna<4,>=2.5 (from requests)
+  Using cached idna-3.20-py3-none-any.whl.metadata (7.2 kB)
+Collecting urllib3<3,>=1.26 (from requests)
+  Using cached urllib3-2.8.0-py3-none-any.whl.metadata (7.4 kB)
+Collecting certifi>=2023.5.7 (from requests)
+  Using cached certifi-2026.7.22-py3-none-any.whl.metadata (2.5 kB)
+Downloading pynput-1.8.2-py2.py3-none-any.whl (92 kB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 92.0/92.0 kB 822.9 kB/s eta 0:00:00
+Using cached requests-2.34.2-py3-none-any.whl (73 kB)
+Using cached certifi-2026.7.22-py3-none-any.whl (136 kB)
+Using cached charset_normalizer-3.5.2-cp312-cp312-manylinux2014_aarch64.manylinux_2_17_aarch64.manylinux_2_28_aarch64.whl (246 kB)
+Using cached idna-3.20-py3-none-any.whl (69 kB)
+Downloading python_xlib-0.33-py2.py3-none-any.whl (182 kB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 182.2/182.2 kB 1.4 MB/s eta 0:00:00
+Downloading six-1.17.0-py2.py3-none-any.whl (11 kB)
+Using cached urllib3-2.8.0-py3-none-any.whl (135 kB)
+Building wheels for collected packages: evdev
+  Building wheel for evdev (pyproject.toml) ... error
+  error: subprocess-exited-with-error
+  
+  × Building wheel for evdev (pyproject.toml) did not run successfully.
+  │ exit code: 1
+  ╰─> [53 lines of output]
+      running bdist_wheel
+      running build
+      running build_py
+      creating build/lib.linux-aarch64-cpython-312/evdev
+      copying src/evdev/evtest.py -> build/lib.linux-aarch64-cpython-312/evdev
+      copying src/evdev/device.py -> build/lib.linux-aarch64-cpython-312/evdev
+      copying src/evdev/genecodes_py.py -> build/lib.linux-aarch64-cpython-312/evdev
+      copying src/evdev/ff.py -> build/lib.linux-aarch64-cpython-312/evdev
+      copying src/evdev/__init__.py -> build/lib.linux-aarch64-cpython-312/evdev
+      copying src/evdev/uinput.py -> build/lib.linux-aarch64-cpython-312/evdev
+      copying src/evdev/eventio_async.py -> build/lib.linux-aarch64-cpython-312/evdev
+      copying src/evdev/eventio.py -> build/lib.linux-aarch64-cpython-312/evdev
+      copying src/evdev/events.py -> build/lib.linux-aarch64-cpython-312/evdev
+      copying src/evdev/ecodes_runtime.py -> build/lib.linux-aarch64-cpython-312/evdev
+      copying src/evdev/genecodes_c.py -> build/lib.linux-aarch64-cpython-312/evdev
+      copying src/evdev/ecodes.py -> build/lib.linux-aarch64-cpython-312/evdev
+      copying src/evdev/util.py -> build/lib.linux-aarch64-cpython-312/evdev
+      running egg_info
+      writing src/evdev.egg-info/PKG-INFO
+      writing dependency_links to src/evdev.egg-info/dependency_links.txt
+      writing top-level names to src/evdev.egg-info/top_level.txt
+      reading manifest file 'src/evdev.egg-info/SOURCES.txt'
+      reading manifest template 'MANIFEST.in'
+      warning: no previously-included files found matching 'src/evdev/ecodes.c'
+      adding license file 'LICENSE'
+      writing manifest file 'src/evdev.egg-info/SOURCES.txt'
+      copying src/evdev/input.c -> build/lib.linux-aarch64-cpython-312/evdev
+      copying src/evdev/py.typed -> build/lib.linux-aarch64-cpython-312/evdev
+      copying src/evdev/uinput.c -> build/lib.linux-aarch64-cpython-312/evdev
+      running build_ext
+      running build_ecodes
+      The 'linux/input.h' and 'linux/input-event-codes.h' include files
+      are missing. You will have to install the kernel header files in
+      order to continue:
+      
+          dnf install kernel-headers-$(uname -r)
+          apt-get install linux-headers-$(uname -r)
+          emerge sys-kernel/linux-headers
+          pacman -S kernel-headers
+      
+      In case they are installed in a non-standard location, you may use
+      the '--evdev-headers' option to specify one or more colon-separated
+      paths. For example:
+      
+          python setup.py \
+            build \
+            build_ecodes --evdev-headers path/input.h:path/input-event-codes.h \
+            build_ext --include-dirs path/ \
+            install
+      
+      If you want to avoid building this package from source, then please consider
+      installing the `evdev-binary` package instead. Keep in mind that it may not be
+      fully compatible with, or support all the features of your current kernel.
+      [end of output]
+(venv) root@c64f813bd218:~/keylogger# nano main.py 
+(venv) root@c64f813bd218:~/keylogger# python3 main.py
+Test logger started. Type a test message.
+Test input: testing my name is Asel
+Test data saved to log.txt
+(venv) root@c64f813bd218:~/keylogger# cat log.txt
+testing my name is Asel
+
+aselbbaiyshbekova@Noutbuk-Asel Lab 13. Keylogger % docker exec -it lab5-ubuntu bash
+root@c64f813bd218:/# cd /home/lab12
+root@c64f813bd218:/home/lab12#ls
+__pycache__  passwords.txt              personalized_passwords.txt  venv
+main.py      personalized_passwords.py  usernames.txt
+root@c64f813bd218:/home/lab12# source venv/bin/activate
+(venv) root@c64f813bd218:/home/lab12# nano api_server.py
+(venv) root@c64f813bd218:/home/lab12# fastapi dev api_server.py --host 0.0.0.0 --port 8000
+
+ ⚡️ Starting FastAPI in development mode
+ 
+ 🐍 Using import string: api_server:app
+ 
+ 🌐 Server started at http://0.0.0.0:8000
+    Documentation at http://0.0.0.0:8000/docs
+ 
+  Logs:
+ 
+ ▕  Will watch for changes in these directories: ['/home/lab12']
+ ▕  Uvicorn running on http://0.0.0.0:8000 (Press CTRL+C to quit)
+ ▕  Started reloader process [51] using WatchFiles
+ ▕  Started server process [53]
+ ▕  Waiting for application startup.
+ ▕  Application startup complete.
+
+root@c64f813bd218:/# cd /home/keylogger
+bash: cd: /home/keylogger: No such file or directory
+root@c64f813bd218:/# source venv/bin/activate
+bash: venv/bin/activate: No such file or directory
+root@c64f813bd218:/# nano send_test.py
+root@c64f813bd218:/# python3 send_test.py
+Traceback (most recent call last):
+  File "//send_test.py", line 1, in <module>
+    import requests
+ModuleNotFoundError: No module named 'requests'
+root@c64f813bd218:/# cat /home/lab12/received_test.txt
+cat: /home/lab12/received_test.txt: No such file or directory
+root@c64f813bd218:/# exit
+exit
+
