@@ -1,0 +1,58 @@
+aselbbaiyshbekova@Noutbuk-Asel ~ % docker start -ai lab5-ubuntu
+root@c64f813bd218:/# apt update
+apt install -y nginx
+Hit:1 http://ports.ubuntu.com/ubuntu-ports noble InRelease
+Hit:2 http://ports.ubuntu.com/ubuntu-ports noble-updates InRelease
+Hit:3 http://ports.ubuntu.com/ubuntu-ports noble-backports InRelease
+Hit:4 http://ports.ubuntu.com/ubuntu-ports noble-security InRelease
+Reading package lists... Done
+Building dependency tree... Done
+Reading state information... Done
+All packages are up to date.
+Reading package lists... Done
+Building dependency tree... Done
+Reading state information... Done
+The following NEW packages will be installed:
+  nginx
+0 upgraded, 1 newly installed, 0 to remove and 0 not upgraded.
+Need to get 521 kB of archives.
+After this operation, 1379 kB of additional disk space will be used.
+Get:1 http://ports.ubuntu.com/ubuntu-ports noble-updates/main arm64 nginx arm64 1.24.0-2ubuntu7.18 [521 kB]
+Fetched 521 kB in 1s (460 kB/s)
+debconf: delaying package configuration, since apt-utils is not installed
+Selecting previously unselected package nginx.
+(Reading database ... 7998 files and directories currently installed.)
+Preparing to unpack .../nginx_1.24.0-2ubuntu7.18_arm64.deb ...
+Unpacking nginx (1.24.0-2ubuntu7.18) ...
+Setting up nginx (1.24.0-2ubuntu7.18) ...
+invoke-rc.d: could not determine current runlevel
+invoke-rc.d: policy-rc.d denied execution of start.
+root@c64f813bd218:/# mkdir -p /var/www/html
+nano /var/www/html/my_site.html
+root@c64f813bd218:/# nano /etc/nginx/sites-available/my_site
+root@c64f813bd218:/# ln -s /etc/nginx/sites-available/my_site /etc/nginx/sites-enabled/my_site
+root@c64f813bd218:/# nginx -t
+nginx: the configuration file /etc/nginx/nginx.conf syntax is ok
+nginx: configuration file /etc/nginx/nginx.conf test is successful
+root@c64f813bd218:/# service nginx start
+ * Starting nginx nginx                                                  [ OK ] 
+root@c64f813bd218:/# service nginx reload
+ * Reloading nginx configuration nginx                                   [ OK ] 
+root@c64f813bd218:/# curl http://localhost:8000
+<div>My site on 8000</div>
+root@c64f813bd218:/# nano /home/api.py
+root@c64f813bd218:/# python3 /home/api.py
+127.0.0.1 - - [13/Oct/2026 10:22:05] "GET / HTTP/1.0" 200 -
+
+
+aselbbaiyshbekova@Noutbuk-Asel ~ % docker exec -it lab5-ubuntu bash
+root@c64f813bd218:/# nano /etc/nginx/sites-available/my_site
+root@c64f813bd218:/# nginx -t
+nginx: the configuration file /etc/nginx/nginx.conf syntax is ok
+nginx: configuration file /etc/nginx/nginx.conf test is successful
+root@c64f813bd218:/# service nginx reload
+ * Reloading nginx configuration nginx                                   [ OK ] 
+root@c64f813bd218:/# curl http://localhost:8000
+Hello from APIroot@c64f813bd218:/# exit
+exit
+
